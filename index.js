@@ -1,7 +1,9 @@
 const express = require("express");
 const { connection } = require("./db");
 const { bankRouter } = require("./routes/bank");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/bank", bankRouter);
 
