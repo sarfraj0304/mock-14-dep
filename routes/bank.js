@@ -11,6 +11,16 @@ bankRouter.get("/", async (req, res) => {
   }
 });
 
+bankRouter.get("/userDetail/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await bankModel.find({ _id: id });
+    res.send({ data: data });
+  } catch (error) {
+    res.send({ msg: error });
+  }
+});
+
 bankRouter.post("/createAccount", async (req, res) => {
   let {
     name,
